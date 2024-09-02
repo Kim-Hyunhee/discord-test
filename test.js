@@ -6,7 +6,7 @@ const prefix = "!"; // 봇을 호출할 때 사용할 prefix를 설정합니다.
 
 client.on("ready", () => {
   // client에 ready 이벤트가 발생하면 아래의 내용 출력하기
-  console.log(${client.user.tag} 봇에 로그인 했습니다!);
+  console.log(`${client.user.tag} 봇에 로그인 했습니다!`);
 });
 // cf.) on과 달리 once는 이벤트를 한 번만 듣는다고 하네요.
 
@@ -37,7 +37,7 @@ client.on("message", (msg) => {
 
   if (command === "ping") {
     // 'ping'이라는 명령어를 받으면,
-    msg.reply(${client.ws.ping}ms); // 웹소켓(websocket) 지연 시간을 알려주기
+    msg.reply(`${client.ws.ping}ms`); // 웹소켓(websocket) 지연 시간을 알려주기
   }
 
   if (command === "embed") {
@@ -83,9 +83,9 @@ client.on("message", (msg) => {
 
       if (member) {
         member
-          .kick(${msg.author.username}님에 의해 서버에서 추방됨.) // audit log에 추방 내용 로그 남기기
+          .kick(`${msg.author.username}님에 의해 서버에서 추방됨.`) // audit log에 추방 내용 로그 남기기
           .then((member) => {
-            msg.reply(성공적으로 ${member.user.tag}님을 추방하였습니다.);
+            msg.reply(`성공적으로 ${member.user.tag}님을 추방하였습니다.`);
             // 채팅 친 곳에 해당 유저의 추방 내용 알리기
           })
           .catch(console.error);
@@ -107,9 +107,9 @@ client.on("message", (msg) => {
 
       if (member) {
         member
-          .ban(${msg.author.username}님에 의해 서버에서 차단됨.) // audit log에 차단 내용 로그 남기기
+          .ban(`${msg.author.username}님에 의해 서버에서 차단됨.`) // audit log에 차단 내용 로그 남기기
           .then((member) => {
-            msg.reply(성공적으로 ${member.user.tag}님을 차단하였습니다.);
+            msg.reply(`성공적으로 ${member.user.tag}님을 차단하였습니다.`);
             // 채팅 친 곳에 해당 유저의 차단 내용 알리기
           })
           .catch(console.error);
@@ -132,7 +132,7 @@ client.on("message", (msg) => {
 
     msg.channel
       .bulkDelete(args[0])
-      .then(msg.reply(${args[0]}만큼의 메시지를 성공적으로 삭제했습니다.))
+      .then(`msg.reply(${args[0]}만큼의 메시지를 성공적으로 삭제했습니다.)`)
       .catch(console.error);
   }
 });
